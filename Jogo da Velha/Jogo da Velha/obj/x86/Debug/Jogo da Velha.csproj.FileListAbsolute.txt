@@ -1,0 +1,5 @@
+C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\Jogo da Velha\bin\Debug\Jogo da Velha.exe
+C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\Jogo da Velha\bin\Debug\Jogo da Velha.pdb
+C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\Jogo da Velha\obj\x86\Debug\Jogo da Velha.exe
+C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\Jogo da Velha\obj\x86\Debug\Jogo da Velha.pdb
+C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\Jogo da Velha\obj\x86\Debug\Jogo da Velha.csprojResolveAssemblyReference.cache
