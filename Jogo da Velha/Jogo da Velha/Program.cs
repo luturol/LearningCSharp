@@ -6,8 +6,7 @@ using System.Text;
 namespace Jogo_da_Velha
 {
     class Program
-    {
-        static ConsoleKeyInfo cki = new ConsoleKeyInfo(); //Global
+    {        
 
         static void Main(string[] args)
         {

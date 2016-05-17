@@ -16,26 +16,37 @@ namespace Jogo_da_Velha
             this.nome = nome;
         }
 
-        public string getNome()
+        public string Nome
         {
-            return nome;
+            get
+            {
+                return this.nome;
+            }
+
+            set
+            {
+                this.nome = value;
+            }
         }
 
-        public void setNome(string nome)
+        public int Vitorias
         {
-            this.nome = nome;
-        }
+            get
+            {
+                return this.vitorias;
+            }
 
-        public int getVitorias()
-        {
-            return vitorias;
+            set
+            {
+                this.vitorias = value;
+            }
         }
 
         public string toString()
         {
             string msg = "";
-            msg += "Nome: " + getNome();
-            msg += "\nVitorias: " + getVitorias();
+            msg += "Nome: " + Nome;
+            msg += "\nVitorias: " + Vitorias;
             return msg;
         }
     }

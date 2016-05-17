@@ -168,7 +168,7 @@ namespace Jogo_da_Velha
                 if (!vezJogador)
                 {
                     Boolean jogadaPlayer = false;
-                    Console.WriteLine("Vez do jogador " + player.getNome());
+                    Console.WriteLine("Vez do jogador " + player.Nome);
                     while (!jogadaPlayer)
                     {
                         jogadaPlayer = jogada("X");
@@ -180,7 +180,7 @@ namespace Jogo_da_Velha
                 else if (vezJogador)
                 {
                     Boolean jogadaP2 = false;
-                    Console.WriteLine("Vez do jogador " + player2.getNome());
+                    Console.WriteLine("Vez do jogador " + player2.Nome);
                     while (!jogadaP2)
                     {
                         jogadaP2 = jogada("O");
@@ -208,7 +208,7 @@ namespace Jogo_da_Velha
                 limpaTela();
                 tabuleiro.mostraTabuleiro(); 
                 Console.ForegroundColor = ConsoleColor.Red;              
-                Console.WriteLine("Jogador " + player.getNome() + " Venceu!!!");
+                Console.WriteLine("Jogador " + player.Nome + " Venceu!!!");
                 cki = Console.ReadKey(true);
                 acabou = true;
             }
@@ -217,7 +217,7 @@ namespace Jogo_da_Velha
                 limpaTela();
                 tabuleiro.mostraTabuleiro();
                 Console.ForegroundColor = ConsoleColor.Red;                
-                Console.WriteLine("Jogador " + player2.getNome() + " Venceu!!");
+                Console.WriteLine("Jogador " + player2.Nome + " Venceu!!");
                 cki = Console.ReadKey(true);
 
                 acabou = true;
@@ -236,7 +236,7 @@ namespace Jogo_da_Velha
                 limpaTela();
                 tabuleiro.mostraTabuleiro();
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Jogador " + player.getNome() + " Venceu!!!");
+                Console.WriteLine("Jogador " + player.Nome + " Venceu!!!");
                 cki = Console.ReadKey(true);
                 acabou = true;
             }

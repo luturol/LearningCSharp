@@ -15,15 +15,18 @@ namespace Jogo_da_Velha
             jogada = new Random();
             vitorias = 0;
         }
-
-        public int getVitorias()
+        
+        public int Vitorias
         {
-            return vitorias;
-        }
+            get
+            {
+                return this.vitorias;
+            }
 
-        public void setVitorias(int w)
-        {
-            vitorias += w;
+            set
+            {
+                this.vitorias = value;
+            }
         }
 
         public int[] jogar()
