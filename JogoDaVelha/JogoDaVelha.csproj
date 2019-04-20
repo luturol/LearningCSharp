@@ -7,7 +7,7 @@
     <ProjectGuid>{F9812F1E-EAF8-4CEA-85AF-5FBEE0EA65F7}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JogoDaVelha</RootNamespace>
+    <RootNamespace>LearningCSharp</RootNamespace>
     <AssemblyName>JogoDaVelha</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
