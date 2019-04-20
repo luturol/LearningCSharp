@@ -1,5 +1,0 @@
-c:\users\rafael.ahrons\documents\visual studio 2010\Projects\PrimeiraApp\PrimeiraApp\bin\Debug\PrimeiraApp.exe
-c:\users\rafael.ahrons\documents\visual studio 2010\Projects\PrimeiraApp\PrimeiraApp\bin\Debug\PrimeiraApp.pdb
-c:\users\rafael.ahrons\documents\visual studio 2010\Projects\PrimeiraApp\PrimeiraApp\obj\x86\Debug\PrimeiraApp.exe
-c:\users\rafael.ahrons\documents\visual studio 2010\Projects\PrimeiraApp\PrimeiraApp\obj\x86\Debug\PrimeiraApp.pdb
-C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\PrimeiraApp\PrimeiraApp\obj\x86\Debug\PrimeiraApp.csprojResolveAssemblyReference.cache

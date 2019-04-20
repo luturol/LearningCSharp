@@ -1,9 +1,0 @@
-C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\JogoDaVelhaTest\obj\Debug\JogoDaVelhaTest.csprojResolveAssemblyReference.cache
-C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\JogoDaVelhaTest\bin\Debug\JogoDaVelhaTest.dll
-C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\JogoDaVelhaTest\bin\Debug\JogoDaVelhaTest.pdb
-C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\JogoDaVelhaTest\bin\Debug\Jogo da Velha.exe
-C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\JogoDaVelhaTest\bin\Debug\Jogo da Velha.pdb
-C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\JogoDaVelhaTest\bin\Debug\Jogo da Velha_Accessor.exe
-C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\JogoDaVelhaTest\bin\Debug\Jogo da Velha_Accessor.pdb
-C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\JogoDaVelhaTest\obj\Debug\JogoDaVelhaTest.dll
-C:\Users\rafael.ahrons\Documents\Visual Studio 2010\Projects\Jogo da Velha\JogoDaVelhaTest\obj\Debug\JogoDaVelhaTest.pdb
