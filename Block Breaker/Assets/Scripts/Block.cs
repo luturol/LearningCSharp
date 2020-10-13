@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    [SerializeField] AudioClip breakSound;
-
+    [SerializeField] AudioClip breakSound;    
+    
     //Cached Variable
     Level level;
-
+    GameStatus gameStatus;
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -16,6 +16,7 @@ public class Block : MonoBehaviour
     void Start()
     {
         level = FindObjectOfType<Level>();
+        gameStatus = FindObjectOfType<GameStatus>();
         level.CountBreakableBlocks();
     }
 
@@ -28,6 +29,7 @@ public class Block : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
         level.BlockDestroyed();
+        gameStatus.AddToScore();
         Destroy(gameObject);
     }
 }

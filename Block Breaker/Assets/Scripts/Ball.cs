@@ -9,7 +9,8 @@ public class Ball : MonoBehaviour
     [SerializeField] float xPush = 2f;
     [SerializeField] float yPush = 15f;
     [SerializeField] AudioClip[] ballSounds;
-
+    [SerializeField] GameStatus gameStatus;
+    
     //state
     Vector2 paddleToBall;
     private bool hasStarted = false;
