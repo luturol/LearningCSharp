@@ -2183,7 +2183,7 @@ PrefabInstance:
     - target: {fileID: 3688376169991135838, guid: 51883ae4b0a761b4f996c13fc761a404,
         type: 3}
       propertyPath: m_Name
-      value: Game Status
+      value: Game Session
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51883ae4b0a761b4f996c13fc761a404, type: 3}

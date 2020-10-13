@@ -8,7 +8,7 @@ public class Block : MonoBehaviour
     
     //Cached Variable
     Level level;
-    GameStatus gameStatus;
+    GameSession gameStatus;
     
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -17,7 +17,7 @@ public class Block : MonoBehaviour
     void Start()
     {
         level = FindObjectOfType<Level>();
-        gameStatus = FindObjectOfType<GameStatus>();
+        gameStatus = FindObjectOfType<GameSession>();
         level.CountBreakableBlocks();
     }
 
