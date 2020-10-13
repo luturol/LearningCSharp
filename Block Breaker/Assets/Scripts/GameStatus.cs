@@ -14,6 +14,23 @@ public class GameStatus : MonoBehaviour
     [SerializeField] int currentScore = 0;
 
     /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    void Awake()
+    {
+        int gameStatusCount = FindObjectsOfType<GameStatus>().Length;
+        if (gameStatusCount > 1)
+        {
+            gameObject.SetActive(false); //this wont cause an impact to the scene
+            Destroy(gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
     /// </summary>
@@ -25,7 +42,7 @@ public class GameStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Time.timeScale = gameSpeed;        
+        Time.timeScale = gameSpeed;
     }
 
     public void AddToScore()
