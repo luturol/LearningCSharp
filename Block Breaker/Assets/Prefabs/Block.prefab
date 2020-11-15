@@ -123,5 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakSound: {fileID: 8300000, guid: 494b492ce2744084eadc500127ee65b2, type: 3}
-  gameStatus: {fileID: 3688376169991135839, guid: 51883ae4b0a761b4f996c13fc761a404,
-    type: 3}
+  blockSparklesVFX: {fileID: 100000, guid: 7d846c02296ef4dc4abff04ce3e5262c, type: 3}

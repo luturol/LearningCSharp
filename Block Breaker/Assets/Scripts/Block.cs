@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    [SerializeField] AudioClip breakSound;    
-    
+    [SerializeField] AudioClip breakSound;
+    [SerializeField] GameObject blockSparklesVFX;
+
     //Cached Variable
     Level level;
     GameSession gameStatus;
-    
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -27,10 +28,21 @@ public class Block : MonoBehaviour
     }
 
     private void DestroyBlock()
-    {
-        AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
-        level.BlockDestroyed();
-        gameStatus.AddToScore();
+    {        
+        PlayBlockDestroySFX();
+        level.BlockDestroyed();    
+        TriggerSparklesVFS();
         Destroy(gameObject);
+    }
+
+    private void PlayBlockDestroySFX()
+    {
+        gameStatus.AddToScore();
+        AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
+    }
+    private void TriggerSparklesVFS()
+    {
+        GameObject sparkles = Instantiate(blockSparklesVFX, transform.position, transform.rotation);
+        Destroy(sparkles, 2f);
     }
 }
