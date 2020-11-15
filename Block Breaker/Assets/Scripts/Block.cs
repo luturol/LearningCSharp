@@ -17,20 +17,27 @@ public class Block : MonoBehaviour
     /// </summary>
     void Start()
     {
+        CountBreakableBlocks();
+    }
+
+    private void CountBreakableBlocks()
+    {
         level = FindObjectOfType<Level>();
         gameStatus = FindObjectOfType<GameSession>();
-        level.CountBreakableBlocks();
+        if (tag == "Breakable")
+            level.CountBlocks();
     }
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        DestroyBlock();
+        if (tag == "Breakable")
+            DestroyBlock();
     }
 
     private void DestroyBlock()
-    {        
+    {
         PlayBlockDestroySFX();
-        level.BlockDestroyed();    
+        level.BlockDestroyed();
         TriggerSparklesVFS();
         Destroy(gameObject);
     }
