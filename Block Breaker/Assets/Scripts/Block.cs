@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    //config params
     [SerializeField] AudioClip breakSound;
     [SerializeField] GameObject blockSparklesVFX;
+    [SerializeField] int maxHits;
+    [SerializeField] Sprite[] hitSprites;
 
     //Cached Variable
     Level level;
     GameSession gameStatus;
+
+    //state variables
+    [SerializeField] int timesHit; //only serialize for debug purposes
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -31,7 +37,29 @@ public class Block : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other)
     {
         if (tag == "Breakable")
+        {
+            HandleHit();
+        }
+    }
+
+    private void HandleHit()
+    {
+        timesHit++;
+        if (maxHits <= timesHit)
+        {
             DestroyBlock();
+        }
+        else
+        {
+            ShowNextHitSprite();
+        }
+
+    }
+
+    private void ShowNextHitSprite()
+    {
+        int spriteIndex = timesHit - 1;
+        GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
     }
 
     private void DestroyBlock()
