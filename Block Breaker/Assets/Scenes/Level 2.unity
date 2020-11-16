@@ -2621,6 +2621,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Session
       objectReference: {fileID: 0}
+    - target: {fileID: 3688376169991135839, guid: 51883ae4b0a761b4f996c13fc761a404,
+        type: 3}
+      propertyPath: isAutoPlayEnable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51883ae4b0a761b4f996c13fc761a404, type: 3}
 --- !u!1001 &1665466886
