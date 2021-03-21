@@ -7,35 +7,23 @@ public class ItemManager : MonoBehaviour
 {
     private List<Item> items;
     private bool stopCounting = false;
-    
-    private float seconds;
-    private float minuts;
-    private float hours;
+    private TimeCounter timeCounter;
 
-    public string TimeToCollect => hours.ToString("00") + ":" + minuts.ToString("00") + ":" + seconds.ToString("00");
+    public string TimeToCollect => timeCounter.GetTime();
+    public void SetStopCounting(bool blockCounter) => stopCounting = blockCounter;
+    
     void Start()
     {
-        items = GetComponents<Item>().ToList();
+        items = FindObjectsOfType<Item>().ToList();
+        timeCounter = new TimeCounter();
     }
 
     // Update is called once per frame
     void Update()
     {        
         if(!stopCounting)
-        {
-            seconds += Time.time;
-
-            if(seconds == 60)
-            {
-                minuts++;
-                seconds = 0;
-            }
-
-            if(minuts == 60)
-            {
-                hours++;
-                minuts = 0;
-            }                
+        {            
+            timeCounter.AddTime(Time.deltaTime);
         }
 
         if(items.Count(e => e.IsCollected) == items.Count())
