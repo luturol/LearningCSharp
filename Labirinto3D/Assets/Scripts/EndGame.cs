@@ -8,6 +8,7 @@ public class EndGame : MonoBehaviour
     [SerializeField] private GameObject endPanel;
     [SerializeField] private Text timeToFinishText;
     [SerializeField] private Text timeToCollectText;
+    [SerializeField] private AudioClip audioClip;
 
     private ItemManager itemManager;
     private PauseGame pauseGame;
@@ -48,8 +49,11 @@ public class EndGame : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-        {
-            hasEnded = true;
+        {            
+            hasEnded = itemManager.IsAllItemsCollected;
+
+            if(hasEnded)
+                GetComponent<AudioSource>().PlayOneShot(audioClip);
         }
     }
 }

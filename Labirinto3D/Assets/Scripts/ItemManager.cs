@@ -10,6 +10,7 @@ public class ItemManager : MonoBehaviour
     private TimeCounter timeCounter;
 
     public string TimeToCollect => timeCounter.GetTime();
+    public bool IsAllItemsCollected => items.Count(e => e.IsCollected) == items.Count();
     public void SetStopCounting(bool blockCounter) => stopCounting = blockCounter;
     
     void Start()
@@ -26,7 +27,7 @@ public class ItemManager : MonoBehaviour
             timeCounter.AddTime(Time.deltaTime);
         }
 
-        if(items.Count(e => e.IsCollected) == items.Count())
+        if(IsAllItemsCollected)
         {
             stopCounting = true;
         }
