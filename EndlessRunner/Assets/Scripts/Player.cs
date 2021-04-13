@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Player : Interactable
 {    
+    [Header("Configurations")]
     [SerializeField] Rigidbody rigidbody;
     [SerializeField] float speed;
     [SerializeField] Transform jumpPosition;
+    [SerializeField] int Life;
 
     private PlayerInput playerInput;
 
@@ -22,7 +24,8 @@ public class Player : Interactable
     // Start is called before the first frame update
     void Start()
     {
-
+        if(Life == 0)
+            Life = 3;
     }
 
     // Update is called once per frame
@@ -71,7 +74,7 @@ public class Player : Interactable
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == "Floor")
+        if(ValidateTag(other.gameObject, "Floor"))
             SetInteractable(true);
     }
 
@@ -82,8 +85,15 @@ public class Player : Interactable
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionExit(Collision other)
     {
-        if(other.gameObject.tag == "Floor")
+        if(ValidateTag(other.gameObject, "Floor"))
             SetInteractable(false);
     }
-   
+
+    private bool ValidateTag(GameObject gameObject, string tag)
+    {
+        return gameObject.tag == tag;
+    }
+    
+    public void LoseLife() => Life--;
+
 }
