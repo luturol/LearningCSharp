@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-   private bool isInteractable;
+    public bool IsInteractable { get; private set; }
 
-   public bool SetInteractable(bool interactable) => isInteractable = interactable;
-   
+    public bool SetInteractable(bool interactable) => IsInteractable = interactable;
+
 }
