@@ -1,6 +1,10 @@
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 using MoqXunit.Controllers;
+using MoqXunit.Interfaces;
+using MoqXunit.Models;
 using Xunit;
 
 namespace MoqXunit.Teste
@@ -16,11 +20,14 @@ namespace MoqXunit.Teste
         public void Sum_Two_Numbers_using_theory(int num1, int num2)
         {
             //arrange
-            CalculatorController controller = new CalculatorController();
+            var mock = new Mock<ICalculatorRepository>();
+            mock.Setup(e => e.GetAllCalculations()).Returns(Enumerable.Empty<Calculation>());
+            mock.Setup(e => e.SaveCalculation(It.IsAny<Calculation>()));
+            var controller = new CalculatorController(mock.Object);
             int expected = num1 + num2;
 
             //act
-            var response = controller.SumTwoNumbers(num1, num2).Result as OkObjectResult;
+            var response = controller.SumTwoNumbers(num1, num2) as OkObjectResult;
             
             //assert
             Assert.NotNull(response);
@@ -31,13 +38,17 @@ namespace MoqXunit.Teste
         public void Sum_two_numbers_using_fact()
         {
             //arrange
-            CalculatorController controller = new CalculatorController();
+            var mock = new Mock<ICalculatorRepository>();
+            mock.Setup(e => e.GetAllCalculations()).Returns(Enumerable.Empty<Calculation>());
+            mock.Setup(e => e.SaveCalculation(It.IsAny<Calculation>()));
+            var controller = new CalculatorController(mock.Object);
+
             int num1 = 1;
             int num2 = 2;
             int expected = num1 + num2;            
 
             //act
-            var response = controller.SumTwoNumbers(num1, num2).Result as OkObjectResult;
+            var response = controller.SumTwoNumbers(num1, num2) as OkObjectResult;
             
             //assert
             Assert.NotNull(response);
