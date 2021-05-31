@@ -28,7 +28,7 @@ namespace MoqXunit.Teste
 
             //act
             var response = controller.SumTwoNumbers(num1, num2) as OkObjectResult;
-            
+
             //assert
             Assert.NotNull(response);
             Assert.Equal(response.Value, expected);
@@ -45,14 +45,14 @@ namespace MoqXunit.Teste
 
             int num1 = 1;
             int num2 = 2;
-            int expected = num1 + num2;            
+            int expected = num1 + num2;
 
             //act
             var response = controller.SumTwoNumbers(num1, num2) as OkObjectResult;
-            
+
             //assert
             Assert.NotNull(response);
             Assert.Equal(response.Value, expected);
-        }
+        }        
     }
 }

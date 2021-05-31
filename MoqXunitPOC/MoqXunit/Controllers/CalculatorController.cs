@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using MoqXunit.Interfaces;
@@ -39,6 +40,11 @@ namespace MoqXunit.Controllers
 
                 return Ok(calculation);
             }
+        }
+
+        public virtual int SubstractTwoNumbers(int num1, int num2)
+        {
+            throw new NotImplementedException();
         }
     }
 }
