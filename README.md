@@ -58,7 +58,7 @@ I'm watching this course to learn more about Unity 2D and how to make games.
 
     A game where you learn how to:
 
-        - Change Scenes
+        - Change Scenes        
         - UI
         - Scripting
         - UI Anchors
