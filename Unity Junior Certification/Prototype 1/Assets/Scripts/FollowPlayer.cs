@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    public GameObject player;
-    public Transform frontAnglePlayer;
-
+    public GameObject player;    
     public bool isThirdView = true;
     private Vector3 offeset = new Vector3(0, 5, -7);
     private Vector3 offsetFronAngle = new Vector3(0,2.1500001f,1.19000006f);
