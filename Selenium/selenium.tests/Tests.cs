@@ -8,20 +8,33 @@ namespace Selenium.Tests
     public class Tests
     {
         private IConfiguration configuration;
-        
+
         public Tests()
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json");
-            
+
             configuration = builder.Build();
         }
 
         [Fact]
-        public void Test1()
+        public void TestFirefox()
         {
-            var pathFirefox = configuration.GetSection("Selenium:PathDriverFirefox").Value;
+            ExecutaGoogle(Browser.Firefox);
+        }
+
+        [Fact]
+        public void TestChrome()
+        {
+            ExecutaGoogle(Browser.Chrome);
+        }
+
+        public void ExecutaGoogle(Browser browser)
+        {
+            TestGoogle google = new TestGoogle(configuration, browser);
+            google.LoadPage();
+            google.ClosePage();
         }
     }
 }
