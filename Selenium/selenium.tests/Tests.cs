@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
+using OpenQA.Selenium;
 using Xunit;
 
 namespace Selenium.Tests
@@ -27,13 +28,17 @@ namespace Selenium.Tests
         [Fact]
         public void TestChrome()
         {
-            ExecutaGoogle(Browser.Chrome);
+            ExecutaGoogle(Browser.Chrome);            
         }
 
         public void ExecutaGoogle(Browser browser)
         {
             TestGoogle google = new TestGoogle(configuration, browser);
             google.LoadPage();
+
+            var results = google.Search("google");        
+
+            Assert.True(results.Count > 0);
             google.ClosePage();
         }
     }

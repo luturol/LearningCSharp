@@ -1,4 +1,6 @@
 using System;
+using System.Collections.ObjectModel;
+using System.Threading;
 using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using selenium;
@@ -39,7 +41,21 @@ namespace Selenium.Tests
 
         public void ClosePage()
         {
-            webDriver.Quit();            
+            webDriver.Quit();
+        }
+
+        public ReadOnlyCollection<IWebElement> Search(string content)
+        {
+            IWebElement webElement = webDriver.FindElement(By.Name("q"));
+            webElement.SendKeys(content);
+            webElement.SendKeys(Keys.Enter);
+            
+            Thread.Sleep(5000);
+            
+            IWebElement resultSearch = webDriver.FindElement(By.Id("search"));
+            var results = resultSearch.FindElements(By.XPath(".//a"));
+            
+            return results;
         }
     }
 }
