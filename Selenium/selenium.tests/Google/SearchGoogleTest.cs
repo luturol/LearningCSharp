@@ -1,16 +1,15 @@
-using System;
 using System.IO;
 using Microsoft.Extensions.Configuration;
-using OpenQA.Selenium;
+using Selenium.Tests.Classes;
 using Xunit;
 
 namespace Selenium.Tests
 {
-    public class Tests
+    public class SearchGoogleTest
     {
         private IConfiguration configuration;
 
-        public Tests()
+        public SearchGoogleTest()
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -33,7 +32,7 @@ namespace Selenium.Tests
 
         public void ExecutaGoogle(Browser browser)
         {
-            TestGoogle google = new TestGoogle(configuration, browser);
+            Google google = new Google(configuration, browser);
             google.LoadPage();
 
             var results = google.Search("google");        

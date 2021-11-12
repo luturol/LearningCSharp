@@ -1,23 +1,21 @@
 using System;
-using System.Collections.ObjectModel;
-using System.Threading;
 using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using selenium;
 
-namespace Selenium.Tests
+namespace Selenium.Tests.Classes
 {
-    public class TestGoogle
+    public class IMC
     {
         private IConfiguration configuration;
         private Browser browser;
         private IWebDriver webDriver;
 
-
-        public TestGoogle(IConfiguration configuration, Browser browser)
+        public IMC(IConfiguration configuration, Browser browser)
         {
             this.configuration = configuration;
             this.browser = browser;
+
 
             string pathDriver = string.Empty;
 
@@ -36,26 +34,12 @@ namespace Selenium.Tests
         public void LoadPage()
         {
             webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
-            webDriver.Navigate().GoToUrl("http://www.google.com.br");
+            webDriver.Navigate().GoToUrl(configuration.GetSection("Selenium:UrlAplicacao").Value);
         }
 
         public void ClosePage()
         {
             webDriver.Quit();
-        }
-
-        public ReadOnlyCollection<IWebElement> Search(string content)
-        {
-            IWebElement webElement = webDriver.FindElement(By.Name("q"));
-            webElement.SendKeys(content);
-            webElement.SendKeys(Keys.Enter);
-            
-            Thread.Sleep(5000);
-            
-            IWebElement resultSearch = webDriver.FindElement(By.Id("search"));
-            var results = resultSearch.FindElements(By.XPath(".//a"));
-            
-            return results;
         }
     }
 }
