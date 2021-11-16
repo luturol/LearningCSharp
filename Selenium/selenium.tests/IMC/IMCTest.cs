@@ -23,10 +23,16 @@ namespace selenium.tests
         {
             IMC imc = new IMC(configuration, browser);
             imc.LoadPage();
-
+            imc.FillIMC(80, 1.74);
+            imc.CalculateIMC();
+            
+            var result = imc.GetIMC();            
             imc.ClosePage();
-        }
 
+            Assert.NotNull(result);
+            Assert.Equal(26.42, result);
+        }
+        
         [Fact]
         public void TestIMC()
         {

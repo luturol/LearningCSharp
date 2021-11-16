@@ -1,6 +1,7 @@
 using System;
 using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using selenium;
 
 namespace Selenium.Tests.Classes
@@ -40,6 +41,30 @@ namespace Selenium.Tests.Classes
         public void ClosePage()
         {
             webDriver.Quit();
+        }
+
+        public void FillIMC(double weight, double height)
+        {
+            IWebElement elementWeight = webDriver.FindElement(By.Id("id_Peso"));
+            elementWeight.SendKeys(weight.ToString());
+
+            IWebElement elementHeight = webDriver.FindElement(By.Name("Altura"));
+            elementHeight.SendKeys(height.ToString());
+        }
+
+        public void CalculateIMC()
+        {
+            IWebElement buttonCalculate = webDriver.FindElement(By.Id("id_btnCalcular"));
+            buttonCalculate.Submit();
+
+            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
+            wait.Until((d) => d.FindElement(By.Id("ResultImc")) != null);
+        }
+
+        public double GetIMC()
+        {
+            IWebElement resultImc = webDriver.FindElement(By.Id("ResultImc"));
+            return Convert.ToDouble(resultImc.Text);
         }
     }
 }
