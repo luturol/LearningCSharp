@@ -14,12 +14,21 @@ namespace selenium
             switch(browser)
             {
                 case Browser.Chrome:
-                    webDriver = new ChromeDriver(pathDriver);
+                    ChromeOptions optionsChrome = new ChromeOptions();
+                    optionsChrome.AcceptInsecureCertificates = true;                    
+                    
+                    webDriver = new ChromeDriver(pathDriver, optionsChrome);
 
                     break;
                 case Browser.Firefox:
-                    FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(pathDriver);
-                    webDriver = new FirefoxDriver(service);
+                    //Solucao para resolver problema de certificado no Firefox com https
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.AcceptInsecureCertificates = true;
+
+                    //Nao funciona com pagina https sem certificado
+                    // FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(pathDriver);
+
+                    webDriver = new FirefoxDriver(pathDriver, firefoxOptions);
                     
                     break;
             }

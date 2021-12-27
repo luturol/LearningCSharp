@@ -66,5 +66,12 @@ namespace Selenium.Tests.Classes
             IWebElement resultImc = webDriver.FindElement(By.Id("ResultImc"));
             return Convert.ToDouble(resultImc.Text);
         }
+
+        public string GetMessage()
+        {
+            IWebElement message = webDriver.FindElement(By.ClassName("alert"));
+
+            return message.Text;
+        }
     }
 }
