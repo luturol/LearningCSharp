@@ -11,19 +11,10 @@ namespace Selenium.Tests
         public SearchGoogleTest() : base()
         {            
         }
-
-        [Fact]
-        public void TestFirefox()
-        {
-            ExecutaGoogle(Browser.Firefox);
-        }
-
-        [Fact]
-        public void TestChrome()
-        {
-            ExecutaGoogle(Browser.Chrome);            
-        }
-
+     
+        [Theory]
+        [InlineData(Browser.Chrome)]
+        [InlineData(Browser.Firefox)]
         public void ExecutaGoogle(Browser browser)
         {
             Google google = new Google(configuration, browser);

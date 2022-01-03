@@ -27,11 +27,13 @@ namespace selenium.tests
 
             imc.ClosePage();
 
-            Assert.NotNull(actualResult);
+            Assert.True(actualResult > 0);
             Assert.Equal(expectedResult, actualResult);
             Assert.NotEmpty(actualMessage);
             Assert.Equal(expectedMessage, actualMessage);
-            Assert.True(actualMessage.Contains(expectedMessage));
+
+            var contain = actualMessage.Contains(expectedMessage);
+            Assert.True(contain);
         }
 
         [Fact]
