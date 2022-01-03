@@ -1,21 +1,15 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
+using selenium.tests.Classes;
 using Selenium.Tests.Classes;
 using Xunit;
 
 namespace Selenium.Tests
 {
-    public class SearchGoogleTest
+    public class SearchGoogleTest : BaseTest
     {
-        private IConfiguration configuration;
-
-        public SearchGoogleTest()
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
-
-            configuration = builder.Build();
+        public SearchGoogleTest() : base()
+        {            
         }
 
         [Fact]

@@ -1,22 +1,16 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
+using selenium.tests.Classes;
 using Selenium;
 using Selenium.Tests.Classes;
 using Xunit;
 
 namespace selenium.tests
 {
-    public class IMCTest
-    {
-        private IConfiguration configuration;
-
-        public IMCTest()
-        {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
-
-            configuration = builder.Build();
+    public class IMCTest : BaseTest
+    {        
+        public IMCTest() : base()
+        {            
         }
 
         private void ExecutaIMC(Browser browser, double weight,

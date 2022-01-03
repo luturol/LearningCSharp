@@ -34,8 +34,9 @@ namespace Selenium.Tests.Classes
 
         public void LoadPage()
         {
-            webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
-            webDriver.Navigate().GoToUrl(configuration.GetSection("Selenium:UrlAplicacao").Value);
+            string url = configuration.GetSection("Selenium:UrlAplicacao").Value;
+
+            webDriver.OpenBrowserPage(TimeSpan.FromSeconds(5), url);            
         }
 
         public void ClosePage()
@@ -45,33 +46,26 @@ namespace Selenium.Tests.Classes
 
         public void FillIMC(double weight, double height)
         {
-            IWebElement elementWeight = webDriver.FindElement(By.Id("id_Peso"));
-            elementWeight.SendKeys(weight.ToString());
+            webDriver.SetValue(By.Id("id_Peso"), weight.ToString());            
 
-            IWebElement elementHeight = webDriver.FindElement(By.Name("Altura"));
-            elementHeight.SendKeys(height.ToString());
+            webDriver.SetValue(By.Name("Altura"), height.ToString());   
         }
 
         public void CalculateIMC()
         {
-            IWebElement buttonCalculate = webDriver.FindElement(By.Id("id_btnCalcular"));
-            buttonCalculate.Submit();
+            webDriver.SubmitButton(By.Id("id_btnCalcular"));            
 
-            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
-            wait.Until((d) => d.FindElement(By.Id("ResultImc")) != null);
+            webDriver.Wait(By.Id("ResultImc"), TimeSpan.FromSeconds(10));
         }
 
         public double GetIMC()
-        {
-            IWebElement resultImc = webDriver.FindElement(By.Id("ResultImc"));
-            return Convert.ToDouble(resultImc.Text);
+        {            
+            return Convert.ToDouble(webDriver.GetValue(By.Id("ResultImc")));
         }
 
         public string GetMessage()
         {
-            IWebElement message = webDriver.FindElement(By.ClassName("alert"));
-
-            return message.Text;
+            return webDriver.GetValue(By.ClassName("alert"));
         }
     }
 }
