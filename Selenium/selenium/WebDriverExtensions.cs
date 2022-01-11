@@ -1,8 +1,9 @@
 using System;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace selenium
+namespace Selenium
 {
     public static class WebDriverExtensions
     {
@@ -34,10 +35,28 @@ namespace selenium
             element.Submit();
         }
 
-        public static void Wait(this IWebDriver webDriver, By by, TimeSpan timeToWait)
+        public static void Wait(this IWebDriver webDriver, By by, TimeSpan timeToWait = default(TimeSpan))
         {
+            if(timeToWait == default(TimeSpan))
+            {
+                timeToWait = TimeSpan.FromSeconds(50);
+            }
+
+            SleepTest();
+
             WebDriverWait wait = new WebDriverWait(webDriver, timeToWait);
             wait.Until(_ => _.FindElement(by) is not null);
+        }
+
+        public static void ClickButton(this IWebDriver webDriver, By by)
+        {
+            IWebElement button = webDriver.FindElement(by);
+            button.Click();
+        }
+
+        public static void SleepTest(int millisecondsTimeOut = 500)
+        {
+            Thread.Sleep(millisecondsTimeOut);
         }
     }
 }
