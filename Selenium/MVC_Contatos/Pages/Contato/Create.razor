@@ -1,0 +1,22 @@
+@page "/contato/create"
+@inject IContatoService contatoService
+@inject NavigationManager navigation
+@attribute [Authorize]
+
+<h2>Novo Contato</h2>
+
+<ContatoForm 
+    Contato="@contato"
+    OnValidSubmit="@CriarContato" 
+    ButtonTextCancelar="Cancelar" 
+    ButtonTextSubmit="Gravar" >
+</ContatoForm>
+
+@code {
+    Contato contato = new Contato();
+    async Task CriarContato()
+    {
+        await contatoService.CreateContato(contato);
+        navigation.NavigateTo("contato");
+    }
+}

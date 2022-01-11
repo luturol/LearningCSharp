@@ -1,0 +1,138 @@
+@page "/contato"
+@inject IContatoService contatoService
+@attribute [Authorize]
+
+<h2>Contatos</h2>
+
+
+<div class="row">
+  <div class="col-md">
+    <div class="d-flex justify-content-end">
+      <a class = "btn btn-success" href="contato/create" name="btnCriar" >Criar Contato</a>        
+    </div>
+  </div>
+</div>
+<hr>
+
+<div class="form-inline">
+    <label id="lblFiltro" class="sr-only" for="filter-name">Filtro</label>
+    <input id="nomeFiltro" type="text" class="form-control mb-2 mr-sm-2" @bind="nomeFiltro" placeholder="Filtrar pelo nome"/>
+    <button name="btnFiltrar" type="button" class="btn btn-primary mr-sm-2 mb-2" @onclick="Filtrar">Filtrar</button>
+    <button name="btnLimparFiltro" type="button" class="btn btn-danger mb-2" @onclick="LimparFiltro">Limpar</button>
+</div>
+
+<hr>
+    
+<ConfirmaExclusao @ref="confirma" onCancela="@CancelaConfirma" onConfirma="@DeletaConfirma">
+   <div>Deseja Excluir o Contato?</div>
+</ConfirmaExclusao>
+
+@if (contatos == null)
+{
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Aguarde...</span>
+    </div>
+}
+else if (contatos.Count == 0)
+{
+    <div class="alert alert-primary" role="alert">
+          Não existem contatos cadastrados...
+    </div>
+}
+else 
+{
+    <table class="table" name="tabela" id="tabelaId" >
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Editar</th>
+                <th>Deletar</th>                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contato in contatos){
+                <tr>
+                    <td>@contato.Nome</td>
+                    <td>@contato.Email</td>
+                    <td>
+                       <a name="btnEditar" class="btn btn-primary" href="contato/edit/@contato.Id">Editar</a>
+                    </td>
+                    <td>
+                       <a name="btnDeletar" class="btn btn-danger" @onclick="@(() => Deletar(contato.Id))">Deletar</a> 
+                    </td>               
+                </tr>            
+            }
+        </tbody>
+    </table>        
+}
+
+@code
+{
+    int codigoContato;
+    List<Contato> contatos;
+
+    ConfirmaExclusao confirma;
+
+    private string nomeFiltro = string.Empty;
+
+    [Parameter]
+    public string Mensagem { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CarregaContatos();
+    }
+
+    async Task CarregaContatos()
+    {
+        try
+        {
+            contatos = await contatoService.GetContatos();
+        }
+        catch (Exception ex)
+        {
+            Mensagem = "Não foi possível acessar os dados de Contatos..." + ex.InnerException.ToString();
+        }
+    }
+
+    void Deletar(int produtoId)
+    {
+        confirma.Exibir();
+        codigoContato = produtoId;
+
+    }
+    void CancelaConfirma()
+    {
+        confirma.Ocultar();
+    }
+    async Task DeletaConfirma()
+    {
+        await contatoService.DeleteContato(codigoContato);
+        confirma.Ocultar();
+        await CarregaContatos();
+    }
+    private async Task LimparFiltro()
+    {
+        nomeFiltro = string.Empty;
+        await CarregaContatos();
+    }
+
+    private async Task Filtrar()
+    {
+        await CarregaContatosFiltrados();
+    }
+
+    async Task CarregaContatosFiltrados()
+    {
+        try
+        {
+            contatos = await contatoService.GetContatoByNome(nomeFiltro);
+        }
+        catch (Exception ex)
+        {
+            Mensagem = "Não foi possível acessar os dados de Contatos..." + ex.InnerException.ToString();
+        }
+    }
+
+}

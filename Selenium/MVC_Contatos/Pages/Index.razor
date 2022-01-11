@@ -1,0 +1,40 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+    
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Olá, Seja Bem Vindo</h1>
+    <p class="lead">Curso de Selenium com AspNetCore 3.1 - Sistema de Contatos.</p>
+    <hr>
+    <h5>Conheça outros cursos da <b>MFRinfo</b></h5>
+    <p>Curso de <a href="https://www.udemy.com/course/aspnet-core-22-c-api-com-arquitetura-ddd-na-pratica/?referralCode=B12C8B1904B8F5ECBB16"> ASP.NET Core -C# API com Arquitetura DDD na Prática</a>.</p>
+    <hr class="my-4">
+    <p class="lead">
+       @if (!authState.User.Identity.IsAuthenticated)
+       {
+          <a class="btn btn-primary btn-lg" href="Identity/Account/Login"  name="btnLogarPrincipalId" >Logar</a>
+       }
+       else
+       {
+           <div class="alert alert-secondary" id="UserIdentityEmailId" role="alert">
+               @authState.User.Identity.Name
+           </div>
+       }
+    </p>
+  </div>
+</div>
+
+@code{
+  [CascadingParameter]
+      private Task<AuthenticationState> authenticationState { get; set; }
+      private AuthenticationState authState { get; set; }
+      protected override async Task OnInitializedAsync()
+      {
+          authState = await authenticationState;
+
+      }
+}

@@ -1,0 +1,31 @@
+@page "/contato/edit/{contatoId:int}"
+@inject IContatoService contatoService
+@inject NavigationManager navigation
+@attribute [Authorize]
+
+<h2>Alterar Contato</h2>
+
+<ContatoForm 
+    Contato="@contato"
+    OnValidSubmit="@AtualizarContato" 
+    ButtonTextCancelar="Cancelar" 
+    ButtonTextSubmit="Alterar" >
+</ContatoForm>
+
+@code{
+    [Parameter]
+    public int contatoId { get; set; }
+
+    private Contato contato = new Contato();
+
+    protected async override Task OnParametersSetAsync()
+    {
+        contato = await contatoService.GetContato(contatoId);
+    }
+
+    async Task AtualizarContato()
+    {
+        await contatoService.EditContato(contatoId, contato);
+        navigation.NavigateTo("contato");
+    }
+}
