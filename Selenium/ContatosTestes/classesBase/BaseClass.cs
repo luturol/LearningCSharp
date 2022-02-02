@@ -16,18 +16,7 @@ namespace ContatosTestes.classesBase
             this.configuration = configuration;
             this.browser = browser;
 
-            string pathDriver = string.Empty;
-
-            if (browser == Browser.Firefox)
-            {
-                pathDriver = configuration.GetSection("Selenium:PathDriverFirefox").Value;
-            }
-            else if (browser == Browser.Chrome)
-            {
-                pathDriver = configuration.GetSection("Selenium:PathDriverChrome").Value;
-            }
-
-            webDriver = WebDriverFactory.CreateWebDriver(this.browser, pathDriver);
+            webDriver = Driver.GetNewInstance(configuration, browser);
         }
 
         public void CarregarPagina()
