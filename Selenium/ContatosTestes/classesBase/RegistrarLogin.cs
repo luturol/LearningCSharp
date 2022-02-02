@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using Selenium;
 
-namespace ContatosTestes.casoTeste
+namespace ContatosTestes.classesBase
 {
     public class RegistrarLogin : BaseClass
     {
@@ -14,7 +14,7 @@ namespace ContatosTestes.casoTeste
 
         public string RegistrarUsuario(string email, string senha)
         {
-            var by = By.Name("RegistrarId");
+            var by = By.Id("RegistrarId");
             webDriver.Wait(by);
             webDriver.ClickButton(by);
 
@@ -41,7 +41,7 @@ namespace ContatosTestes.casoTeste
 
             webDriver.Wait(By.Id("UserIdentityEmailId"));
             
-            return string.Empty;
+            return webDriver.GetValue(By.Id("UserIdentityEmailId"));
         }
     }
 }
