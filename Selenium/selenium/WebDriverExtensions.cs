@@ -39,13 +39,13 @@ namespace Selenium
         {
             if(timeToWait == default(TimeSpan))
             {
-                timeToWait = TimeSpan.FromSeconds(50);
+                timeToWait = TimeSpan.FromSeconds(5);
             }
 
             SleepTest();
 
             WebDriverWait wait = new WebDriverWait(webDriver, timeToWait);
-            wait.Until(_ => _.FindElement(by) is not null);
+            wait.Until(_ => _.FindElement(by));
         }
 
         public static void ClickButton(this IWebDriver webDriver, By by)

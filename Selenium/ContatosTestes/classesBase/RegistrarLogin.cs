@@ -40,8 +40,27 @@ namespace ContatosTestes.classesBase
             webDriver.SubmitButton(By.ClassName("btn"));
 
             webDriver.Wait(By.Id("UserIdentityEmailId"));
-            
+
             return webDriver.GetValue(By.Id("UserIdentityEmailId"));
+        }
+
+        public string UsuarioJaRegistrado(string email, string senha)
+        {
+            var by = By.Id("RegistrarId");
+            webDriver.Wait(by);
+            webDriver.ClickButton(by);
+
+            webDriver.Wait(By.XPath("/html/body/div/main/div/div/form/h4"));
+
+            webDriver.SetValue(By.Id("Input_Email"), email);
+            webDriver.SetValue(By.Id("Input_Password"), senha);
+            webDriver.SetValue(By.Id("Input_ConfirmPassword"), senha);
+
+            webDriver.SubmitButton(By.ClassName("btn"));
+
+            webDriver.Wait(By.XPath("/html/body/div/main/div/div/form/div[1]/ul/li"));
+            
+            return webDriver.GetValue(By.XPath("/html/body/div/main/div/div/form/div[1]/ul/li"));
         }
     }
 }
