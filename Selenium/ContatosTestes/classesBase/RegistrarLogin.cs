@@ -44,6 +44,23 @@ namespace ContatosTestes.classesBase
             return webDriver.GetValue(By.Id("UserIdentityEmailId"));
         }
 
+        public string Login(string email, string senha)
+        {
+            webDriver.Wait(By.Name("btnLogarPrincipalId"));
+            webDriver.ClickButton(By.Name("btnLogarPrincipalId"));
+
+            webDriver.Wait(By.Id("Input_Email"));
+            webDriver.SetValue(By.Id("Input_Email"), email);
+            webDriver.SetValue(By.Id("Input_Password"), senha);
+            webDriver.ClickButton(By.Id("Input_RememberMe"));
+
+            webDriver.SubmitButton(By.ClassName("btn"));
+
+            webDriver.Wait(By.Id("UserIdentityEmailId"));
+
+            return webDriver.GetValue(By.Id("UserIdentityEmailId"));
+        }
+
         public string UsuarioJaRegistrado(string email, string senha)
         {
             var by = By.Id("RegistrarId");
@@ -59,7 +76,7 @@ namespace ContatosTestes.classesBase
             webDriver.SubmitButton(By.ClassName("btn"));
 
             webDriver.Wait(By.XPath("/html/body/div/main/div/div/form/div[1]/ul/li"));
-            
+
             return webDriver.GetValue(By.XPath("/html/body/div/main/div/div/form/div[1]/ul/li"));
         }
     }

@@ -33,10 +33,9 @@ namespace ContatosTestes.casoTeste
             var mensagem = registrarLogin.UsuarioJaRegistrado(email, senha);
             registrarLogin.FecharPagina();
 
-            Assert.NotEmpty(mensagem);            
+            Assert.NotEmpty(mensagem);
             Assert.True(mensagem.Contains("already"));
             Assert.True(mensagem.Contains(email));
-            
         }
 
         [Fact(DisplayName = "Chrome - Registrar e Logar Usuário")]
@@ -44,7 +43,7 @@ namespace ContatosTestes.casoTeste
         {
             Executar(Browser.Chrome, _email, _senha);
             ExecutarJaRegistrado(Browser.Chrome, _email, _senha);
-            
+
         }
 
         [Fact(Skip = "Teste FireFox somente removendo o Skip")]
