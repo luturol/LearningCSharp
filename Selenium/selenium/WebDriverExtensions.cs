@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -37,7 +39,7 @@ namespace Selenium
 
         public static void Wait(this IWebDriver webDriver, By by, TimeSpan timeToWait = default(TimeSpan))
         {
-            if(timeToWait == default(TimeSpan))
+            if (timeToWait == default(TimeSpan))
             {
                 timeToWait = TimeSpan.FromSeconds(5);
             }
@@ -57,6 +59,36 @@ namespace Selenium
         public static void SleepTest(int millisecondsTimeOut = 500)
         {
             Thread.Sleep(millisecondsTimeOut);
+        }
+
+        public static void SetSelectByValue(this IWebDriver webDriver, By by, string value)
+        {
+            IWebElement element = webDriver.FindElement(by);
+            SelectElement select = new SelectElement(element);
+
+            select.SelectByValue(value);
+        }
+
+        public static void SetSelectByText(this IWebDriver webDriver, By by, string text)
+        {
+            IWebElement element = webDriver.FindElement(by);
+            SelectElement select = new SelectElement(element);
+
+            select.SelectByText(text);
+        }
+
+        public static List<string> GetTableValues(this IWebDriver webDriver, By by)
+        {
+            IWebElement element = webDriver.FindElement(by);
+            List<IWebElement> rows = element.FindElements(By.TagName("td")).ToList();
+
+            List<string> table = new List<string>();
+            foreach(var item in rows)
+            {
+                table.Add(item.Text);
+            }
+
+            return table;
         }
     }
 }

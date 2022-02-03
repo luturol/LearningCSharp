@@ -83,7 +83,7 @@ namespace ContatosTestes.classesBase
 
             _driver.SubmitButton(By.Name("btnGravar"));
 
-            _driver.Quit();
+            // _driver.Quit();
 
             return _contato;
         }
