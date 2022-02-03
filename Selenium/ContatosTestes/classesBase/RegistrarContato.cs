@@ -87,5 +87,20 @@ namespace ContatosTestes.classesBase
 
             return _contato;
         }
+
+        public ContatoDTO EditarContato()
+        {
+            _contato.Nome = Faker.Name.FullName();
+
+            _driver.Wait(By.LinkText("Editar"));
+            _driver.ClickButton(By.LinkText("Editar"));
+
+            _driver.Wait(By.Id("nomeId"));
+            _driver.SetValue(By.Id("nomeId"), _contato.Nome);
+
+            _driver.SubmitButton(By.Name("btnGravar"));
+
+            return _contato;
+        }
     }
 }
