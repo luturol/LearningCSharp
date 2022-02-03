@@ -22,5 +22,17 @@ namespace ContatosTestes.classesBase
 
             return webDriver.GetTableValues(By.Id("tabelaId"));
         }
+
+        public string PesquisarContatoPorNomePosDelete(ContatoDTO contatoDTO)
+        {
+            webDriver.Wait(By.Id("nomeFiltro"));
+            webDriver.SetValue(By.Id("nomeFiltro"), contatoDTO.Nome);
+           
+            webDriver.ClickButton(By.Name("btnFiltrar"));
+
+            webDriver.Wait(By.ClassName("alert"));
+
+            return webDriver.GetValue(By.ClassName("alert"));
+        }
     }
 }

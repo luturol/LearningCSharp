@@ -102,5 +102,27 @@ namespace ContatosTestes.classesBase
 
             return _contato;
         }
+
+        public void ExcluirContato()
+        {
+            _driver.Wait(By.LinkText("Deletar"));
+            _driver.ClickButton(By.LinkText("Deletar"));
+
+            _driver.Wait(By.ClassName("modal-dialog"));
+
+            _driver.ClickButton(By.Name("bntConfirmar"));
+
+        }
+
+        public void ExcluirContatoCancelar()
+        {
+            _driver.Wait(By.LinkText("Deletar"));
+            _driver.ClickButton(By.LinkText("Deletar"));
+
+            _driver.Wait(By.ClassName("modal-dialog"));
+
+            _driver.ClickButton(By.Name("bntCancelar"));
+            
+        }
     }
 }

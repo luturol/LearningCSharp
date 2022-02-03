@@ -30,5 +30,10 @@ namespace ContatosTestes.classesBase
         {
             return _instance;
         }
+
+        public static void FecharPagina()
+        {
+            _instance.Quit();
+        }
     }
 }
